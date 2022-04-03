@@ -6,7 +6,7 @@ This project is used to generate the virtual machines required for my home Kuber
 ### Host setup
 Setup a Ubuntu VM with at least 1 CPU and 2GB RAM.
 
-### Sudo setup
+### Setup passwordless sudo
 
  - Edit your /etc/sudoers to add your account to passwordless sudoers
 ````bash
@@ -35,13 +35,15 @@ sudo apt-get update && sudo apt-get install terraform
 
 ### Deployment
 
+Before that, make sure the Ubuntu Golden Image is available on the Proxmox cluster (https://github.com/Algueron/proxmox-golden-images).
+
  - Clone this repository
 ````bash
-git clone https://github.com/Algueron/terraform-home.git
+git clone https://github.com/Algueron/terraform-kubernetes-cluster.git
 ````
  - Move into the directory
 ````bash
-cd terraform-home
+cd terraform-kubernetes-cluster
 ````
  - Download Terraform requirements
 ````bash
