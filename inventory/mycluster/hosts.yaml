@@ -1,0 +1,58 @@
+all:
+  hosts:
+    kubernetes-master-0:
+      ansible_host: 192.168.0.121
+      ip: 192.168.0.121
+      access_ip: 192.168.0.121
+    kubernetes-master-1:
+      ansible_host: 192.168.0.122
+      ip: 192.168.0.122
+      access_ip: 192.168.0.122
+    kubernetes-master-2:
+      ansible_host: 192.168.0.123
+      ip: 192.168.0.123
+      access_ip: 192.168.0.123
+    kubernetes-worker-0:
+      ansible_host: 192.168.0.131
+      ip: 192.168.0.131
+      access_ip: 192.168.0.131
+    kubernetes-worker-1:
+      ansible_host: 192.168.0.132
+      ip: 192.168.0.132
+      access_ip: 192.168.0.132
+    kubernetes-worker-2:
+      ansible_host: 192.168.0.133
+      ip: 192.168.0.133
+      access_ip: 192.168.0.133
+    kubernetes-worker-3:
+      ansible_host: 192.168.0.134
+      ip: 192.168.0.134
+      access_ip: 192.168.0.134
+    kubernetes-worker-4:
+      ansible_host: 192.168.0.135
+      ip: 192.168.0.135
+      access_ip: 192.168.0.135
+  children:
+    kube_control_plane:
+      hosts:
+        kubernetes-master-0:
+        kubernetes-master-1:
+        kubernetes-master-2:
+    kube_node:
+      hosts:
+        kubernetes-worker-0:
+        kubernetes-worker-1:
+        kubernetes-worker-2:
+        kubernetes-worker-3:
+        kubernetes-worker-4:
+    etcd:
+      hosts:
+        kubernetes-master-0:
+        kubernetes-master-1:
+        kubernetes-master-2:
+    k8s_cluster:
+      children:
+        kube_control_plane:
+        kube_node:
+    calico_rr:
+      hosts: {}
