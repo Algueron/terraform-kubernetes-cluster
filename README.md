@@ -83,3 +83,12 @@ sudo pip3 install -r requirements.txt
 ````bash
 ansible-playbook -i ~/terraform-kubernetes-cluster/inventory/mycluster/hosts.yaml -u algueron --private-key=~/.ssh/id_rsa --become cluster.yml
 ````
+
+## Kubernetes Connection
+
+ - Download kubectl (https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/#installer-kubectl-sur-windows)
+ - Copy kubectl on your machine and adds it to the PATH
+ - Connect using SSH to one of the Kubernetes control plane node created previously
+ - Retrieve the file /etc/kubernetes/admin.conf and copy it onto your local machine
+ - Change the variable clusters.cluster[0].server to use the external IP
+ - Set an environment variable KUBECONFIG pointing to the file retrieved
