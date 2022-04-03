@@ -81,5 +81,5 @@ sudo pip3 install -r requirements.txt
 ````
  - Deploy the cluster
 ````bash
-ansible-playbook -i ~/terraform-home/inventory/mycluster/inventory.yaml -u algueron -b -v --private-key=~/.ssh/id_rsa cluster.yml
+ansible-playbook -i ~/terraform-kubernetes-cluster/inventory/mycluster/hosts.yaml -u algueron --private-key=~/.ssh/id_rsa --become cluster.yml
 ````
